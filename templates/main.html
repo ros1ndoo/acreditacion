@@ -1,0 +1,24 @@
+{% extends 'base.html' %}  <!-- Extiende la plantilla base -->
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Acreditación</h2>
+    <ul class="list-unstyled">
+        <li>
+            <a href="{% url 'acreditacion_centros' %}" class="text-decoration-none">
+                <span>&#x25B8;</span> Acreditación institucional de los centros
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'acreditacion_estudios' %}" class="text-decoration-none">
+                <span>&#x25B8;</span> Acreditación de los estudios
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'periodos_evaluacion' %}" class="text-decoration-none">
+                <span>&#x25B8;</span> Periodos de evaluación
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
