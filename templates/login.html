@@ -4,22 +4,36 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="text-center mb-4">Indique su N.I.P. y contraseña administrativa</h2>
+            <h2 class="text-center mb-4">Indique su correo electrónico y contraseña</h2>
             <div class="card shadow-sm p-4">
+                <!-- Mostrar mensajes de error -->
+                {% if messages %}
+                    <div class="mb-3">
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
                 <form method="post">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="nip" class="form-label">NIP</label>
-                        <input type="text" class="form-control" id="nip" name="nip" required>
+                        <label for="correo_electronico" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña Administrativa</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="contrasena" required>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Acceder</button>
                     </div>
                 </form>
+                <div class="text-center mt-3">
+                    <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+                </div>
             </div>
         </div>
     </div>

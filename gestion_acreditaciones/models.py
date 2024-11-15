@@ -42,8 +42,14 @@ class Acreditacion(models.Model):
     estado = models.CharField(max_length=20, choices=[('Pendiente', 'Pendiente'), ('Completada', 'Completada'), ('Rechazada', 'Rechazada')])
     observaciones = models.TextField(null=True, blank=True)
 
+# Modelo para Periodos de Evaluación
+class PeriodoEvaluacion(models.Model):
+    nombre = models.CharField(max_length=100)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
+
     def __str__(self):
-        return f"Acreditación de {self.plan_estudio}"
+        return self.nombre
 
 # Modelo para Historial de Cambios (opcional)
 class HistorialCambio(models.Model):

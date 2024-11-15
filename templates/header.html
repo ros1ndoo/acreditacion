@@ -1,29 +1,47 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'images/blancoUZ.png' %}" alt="Universidad de Zaragoza" style="max-height:50px;">
-            
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">English</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'main' %}">Enlaces</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ayuda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-light" href="{% url 'login' %}">Iniciar sesión</a>
-                </li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="{% static 'images/blancoUZ.png' %}"
+        alt="Universidad de Zaragoza"
+        style="max-height: 50px"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'main' %}">Enlaces</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ayuda</a>
+        </li>
+
+        <li class="nav-item">
+          {% if request.session.usuario_id %}
+          <a class="nav-link btn btn-outline-light" href="{% url 'logout' %}"
+            >Cerrar Sesión</a>
+          {% else %}
+          <a class="nav-link btn btn-outline-light" href="{% url 'login' %}"
+            >Iniciar Sesión</a>
+          {% endif %}
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>

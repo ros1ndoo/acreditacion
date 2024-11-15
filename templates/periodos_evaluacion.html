@@ -2,35 +2,37 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Periodos de evaluación de los estudios 2023/2024</h2>
+    <h2 class="mb-4">Listar Periodos de Evaluación</h2>
 
     <div class="mb-3 d-flex justify-content-between">
-        <span>Total {{ total_items }} items.</span>
-        <button class="btn btn-primary">Descargar</button>
+        <span>Total de filas: {{ total_items }} </span>
+        <a href="{% url 'descargar_periodos_evaluacion' %}" class="btn btn-primary">Descargar CSV</a>
     </div>
 
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Cód. estudio</th>
+                <th>ID</th>
                 <th>Nombre</th>
-                <th>Años del periodo de evaluación</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
                 <th>Editar</th>
             </tr>
         </thead>
         <tbody>
-            {% for estudio in periodos %}
+            {% for periodo in periodos %}
             <tr>
-                <td>{{ estudio.codigo_estudio }}</td>
-                <td>{{ estudio.nombre|default:"(not set)" }}</td>
-                <td>{{ estudio.anos_periodo_evaluacion|default:"(not set)" }}</td>
+                <td>{{ periodo.id }}</td>
+                <td>{{ periodo.nombre|default:"(not set)" }}</td>
+                <td>{{ periodo.fecha_inicio|default:"(not set)" }}</td>
+                <td>{{ periodo.fecha_fin|default:"(not set)" }}</td>
                 <td>
-                    <a href="{% url 'editar_periodo' estudio.codigo_estudio %}" class="btn btn-sm btn-outline-primary">✏️</a>
+                    <a href="{% url 'editar_periodo' periodo.id %}" class="btn btn-sm btn-outline-primary">✏️</a>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" class="text-center">No hay datos disponibles</td>
+                <td colspan="5" class="text-center">No hay datos disponibles</td>
             </tr>
             {% endfor %}
         </tbody>

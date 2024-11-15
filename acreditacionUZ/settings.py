@@ -111,16 +111,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es'  
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+#Zona horaria
+TIME_ZONE = 'CET'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -134,3 +132,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Asegurar que haya login
+LOGIN_URL = '/login/'  
+
+#Mantener sesion iniciada, durante X tiempo
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 semana (en segundos)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+SESSION_SAVE_EVERY_REQUEST = True  
+

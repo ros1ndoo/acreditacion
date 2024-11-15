@@ -5,8 +5,8 @@
     <h2 class="mb-4">Acreditación de los estudios</h2>
 
     <div class="mb-3 d-flex justify-content-between">
-        <span>Total {{ total_items }} items.</span>
-        <button class="btn btn-primary">Descargar</button>
+        <span>Total de filas: {{ total_items }} </span>
+        <a href="{% url 'descargar_planes_estudio' %}" class="btn btn-primary">Descargar CSV</a>
     </div>
 
     <table class="table table-striped table-bordered">
