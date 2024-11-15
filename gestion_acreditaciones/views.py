@@ -60,7 +60,13 @@ def periodos_evaluacion_view(request):
     return render(request, 'periodos_evaluacion.html')
 
 def login_view(request):
+    # Si el usuario ya ha iniciado sesión, redirigirlo a 'main'
+    if 'usuario_id' in request.session:
+        return redirect('main')  # Redirige a la vista 'main' si el usuario ya está autenticado
+    
+    # Si el usuario no ha iniciado sesión, muestra la página de inicio de sesión
     return render(request, 'login.html')
+
 
 def registro_usuario(request):
     if request.method == 'POST':
